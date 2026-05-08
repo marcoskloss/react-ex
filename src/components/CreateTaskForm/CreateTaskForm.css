@@ -1,0 +1,35 @@
+.task-form {
+  display: flex;
+  align-items: stretch; /* ou center com widths dai */
+  gap: 0.75rem;
+  margin: 0 0 1.5rem;
+}
+
+.task-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font: inherit;
+  color: #111;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.task-input::placeholder {
+  color: #aaa;
+}
+
+.task-input:focus-visible {
+  outline: 2px solid #38b6ff;
+}
+
+.task-submit {
+  padding: 0.75rem 1.1rem;
+  color: #fff;
+  background: #000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}

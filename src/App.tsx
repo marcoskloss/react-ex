@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
-import { CreateTaskForm } from "./CreateTaskForm";
-import { TaskList } from "./TaskList";
+import { CreateTaskForm } from "./components/CreateTaskForm/CreateTaskForm";
+import { TaskList } from "./components/TaskList/TaskList";
 
 export type Task = {
   text: string;
@@ -24,8 +24,8 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Minhas tarefas</h1>
+    <div className="app">
+      <h1 className="app-title">Minhas tarefas</h1>
       <CreateTaskForm onSubmit={handleAddTask} />
       <TaskList tasks={tasks} onToggleTask={handleToggleTask} />
     </div>

@@ -1,4 +1,5 @@
-import type { Task } from "./App";
+import type { Task } from "../../App";
+import "./TaskList.css";
 
 type TaskListProps = {
   tasks: Task[];
@@ -7,19 +8,20 @@ type TaskListProps = {
 
 export function TaskList({ tasks, onToggleTask }: TaskListProps) {
   return (
-    <ul>
+    <ul className="task-list">
       {tasks.map((task) => {
         return (
-          <li style={{ display: "flex" }} key={task.text}>
+          <li className="task-item" key={task.text}>
             <span
-              style={{
-                textDecoration: task.completed ? "line-through" : "",
-              }}
+              className={
+                task.completed ? "task-text task-text--done" : "task-text"
+              }
             >
               {task.text}
             </span>
             <button
-              style={{ marginLeft: "auto", width: "5rem" }}
+              type="button"
+              className="task-action"
               onClick={() => onToggleTask(task)}
             >
               {task.completed ? "Reabrir" : "Completar"}
