@@ -1,5 +1,6 @@
 import { useState } from "react";
-import type { Task } from "./App";
+import type { Task } from "../../App";
+import "./CreateTaskForm.css";
 
 type CreateTaskFormProps = {
   onSubmit: (task: Task) => void;
@@ -12,7 +13,7 @@ export function CreateTaskForm({ onSubmit }: CreateTaskFormProps) {
     setNewTask(ev.target.value);
   }
 
-  function handleSubmit(event: React.SubmitEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (newTask.trim().length > 0) {
@@ -27,14 +28,17 @@ export function CreateTaskForm({ onSubmit }: CreateTaskFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="task-form" onSubmit={handleSubmit}>
       <input
+        className="task-input"
         type="text"
-        placeholder="Adicione uma nova tarefa"
+        placeholder="Escreva sua task aqui..."
         value={newTask}
         onChange={handleChangeTaskText}
       />
-      <button type="submit">Adicionar</button>
+      <button className="task-submit" type="submit">
+        + Add
+      </button>
     </form>
   );
 }
