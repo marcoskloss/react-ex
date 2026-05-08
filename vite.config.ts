@@ -1,7 +1,17 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig as defineTestConfig } from "vitest/config";
+import react from '@vitejs/plugin-react';
 
-// https://vite.dev/config/
-export default defineConfig({
+const config = defineConfig({
   plugins: [react()],
-})
+});
+
+const testConfig = defineTestConfig({
+  test: {
+    globals: true,
+    environment: "jsdom",
+  },
+});
+
+export default { ...config, ...testConfig };
+

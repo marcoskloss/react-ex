@@ -8,6 +8,7 @@ type CreateTaskFormProps = {
 
 export function CreateTaskForm({ onSubmit }: CreateTaskFormProps) {
   const [newTask, setNewTask] = useState("");
+  const [error, setError] = useState("");
 
   function handleChangeTaskText(ev: React.ChangeEvent<HTMLInputElement>) {
     setNewTask(ev.target.value);
@@ -16,13 +17,18 @@ export function CreateTaskForm({ onSubmit }: CreateTaskFormProps) {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (newTask.trim().length > 0) {
+    const isBlank = newTask.trim().length === 0;
+
+    if (isBlank) {
+      setError("Preencha o campo");
+    } else {
       const task: Task = {
         completed: false,
         text: newTask,
       };
 
       setNewTask("");
+      setError("");
       onSubmit(task);
     }
   }
@@ -39,6 +45,7 @@ export function CreateTaskForm({ onSubmit }: CreateTaskFormProps) {
       <button className="task-submit" type="submit">
         + Add
       </button>
+      <small style={{ color: "red" }}>{error}</small>
     </form>
   );
 }

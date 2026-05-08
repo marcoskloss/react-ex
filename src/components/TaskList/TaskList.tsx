@@ -23,6 +23,7 @@ export function TaskList({ tasks, onToggleTask }: TaskListProps) {
               type="button"
               className="task-action"
               onClick={() => onToggleTask(task)}
+              data-testid={`${task.text}-toggle`}
             >
               {task.completed ? "Reabrir" : "Completar"}
             </button>
